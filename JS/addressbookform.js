@@ -57,3 +57,11 @@ window.addEventListener('DOMContentLoaded', (event) =>
   
     });
 });    
+const save = (event) => {
+    event.preventDefault();
+    alert("The details are submitted");
+  }
+  
+  const resetForm = () => {
+    
+  }
