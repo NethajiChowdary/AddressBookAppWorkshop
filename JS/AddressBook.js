@@ -1,112 +1,71 @@
-class Contact{
-
-    get id()
-    {
-        return this._id;
+class Contact {
+  
+    get id() {
+      return this._id;
     }
-
-    set id(id)
-    {
-        this._id = id;
+    set id(id) {
+      this._id = id;
     }
-
-    get firstName()
-    {
-        return this._firstName;
+  
+    get name() {
+      return this._name;
     }
-
-    set firstName(firstName)
-    {
-        let firstNameRegex = RegExp('^[A-Z]{1,}[a-z]{2,}$')
-        if(firstNameRegex.test(firstName))
-        this._firstName = firstName;
-        else
-        throw 'First Name Invalid'
+    set name(name) {
+      let nameRegex = RegExp("^[A-Z]{1}[A-z ]{2,}$");
+      if (nameRegex.test(name)) {
+        this._name = name;
+      } else {
+        throw "invalid Name";
+      }
     }
-
-    get address()
-    {
-        return this._address;
+  
+    get phoneNumber() {
+      return this._phoneNumber;
     }
-
-    set address(address)
-    {
-        let words = address.split(" ");
-        if(words.length>1){
-            let addressRegex = RegExp('^[A-Za-z,.0-9]{3,}$');
-            for(const word of words){
-                if(!addressRegex.test(word))
-                throw 'Address Invalid';
-            }
-            this._address = address;
-        }
-        else{
-            throw 'Address Invalid';
-        }
+    set phoneNumber(phoneNumber) {
+      let phoneNumberRegex = RegExp("^[0-9]{2}[ ][9]{1,}[0-9]{9}$");
+      if (phoneNumberRegex.test(phoneNumber)) {
+        this._phoneNumber = phoneNumber;
+      } else {
+        throw "Phone number is incorrect";
+      }   
     }
-
-    get city()
-    {
-        return this._city;
+  
+    get address() {
+      return this._address;
     }
-
-    set city(city)
-    {
-        let cityRegex = RegExp('^[A-Za-z\\s]{4,}$')
-        if(cityRegex.test(city))
-        this._city = city;
-        else
-        throw 'City Invalid'
+    set address(address) {
+      this._address = address;
     }
-
-    get state()
-    {
-        return this._state;
+    
+    get city() {
+      return this._city;
     }
-
-    set state(state)
-    {
-        let stateRegex = RegExp('^[A-Za-z\\s]{4,}$')
-        if(stateRegex.test(state))
-        this._state = state;
-        else
-        throw 'State Invalid'
+    set city(city) {
+      this._city = city;
     }
-
-    get zip()
-    {
-        return this._zip;
+    
+    get state() {
+      return this._state;
     }
-
-    set zip(zip)
-    {
-        let zipRegex = RegExp('^[0-9]{3}[\\s]*[0-9]{2,}$');
-        if(zipRegex.test(zip))
+    set state(state) {
+      this._state = state;
+    }
+  
+    get zip() {
+      return this._zip;
+    }
+    set zip(zip) {
+      let zipRegex = RegExp("^[0-9]{3}[ ]?[0-9]{3}$");
+      if (zipRegex.test(zip)) {
         this._zip = zip;
-        else
-        throw 'Zip Invalid'
+      } else {
+        throw "zip is incorrect";
+      }
     }
-
-    get phone()
-    {
-        return this._phone;
+  
+    toString(){
+        return `id ${this.id} Name ${this.name} phoneNumber ${this.phoneNumber} Address ${this.address} City ${this.city} State ${this.state} Zip  ${this.zip}`
     }
-
-    set phone(phone)
-    {
-        let phoneRegex1 = RegExp("^[1-9][0-9]{9}$");
-        let phoneRegex2 = RegExp("^[0-9]{2}[1-9][0-9]{9}$");
-        let phoneRegex3 = RegExp("^[+][0-9]{2}[1-9][0-9]{9}$");
-        if(phoneRegex1.test(phone) || phoneRegex2.test(phone) || phoneRegex3.test(phone))
-        this._phone = phone;
-        else
-        throw 'Phone Number Invalid'
-    }
-
-    toString()
-    {
-        return "Id = "+this.id+", FirstName = "+this.firstName+", LastName = "+this.lastName+", Address = "+this.address+
-                ", City = "+this.city+", State = "+this.state+", Zip = "+this.zip+", Phone = "+this.phone+", Email = "+this.email;
-    }
-
-}
+  
+  }
