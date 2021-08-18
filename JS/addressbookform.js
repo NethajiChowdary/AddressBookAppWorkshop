@@ -62,7 +62,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       contactList = [contact]
     }
     alert("Contact Added Sucessfully")
-    localStorage.setItem("contactList",JSON.stringify(contactList))
+    localStorage.setItem("ContactList",JSON.stringify(contactList))
   }
   
   function createContact() {
