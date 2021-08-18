@@ -1,8 +1,13 @@
 window.addEventListener("DOMContentLoaded", (event) => {
+    contactList = getContactFromStorage()
     document.querySelector(".contact-count").textContent = contactList.length;
     createInnerHtml();
   });
   
+  const getContactFromStorage = () =>{
+      return localStorage.getItem('contactList') ? 
+      JSON.parse(localStorage.getItem('contactList')) : []
+  }
   
   const createInnerHtml = () => {
     if (contactList.length == 0) {
@@ -36,24 +41,3 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
     document.querySelector("#table-display").innerHTML = innerHtml;
   };
-  
-  let contactList = [
-    {
-      _id: 1629208165495,
-      _name: "Nethaji",
-      _phoneNumber: "90 9874783210",
-      _address: "Chepauk",
-      _city: "Chennai",
-      _state: "Tamil Nadu",
-      _zip: "520141",
-    },
-    {
-      _id: 1629208165495,
-      _name: "Dinesh",
-      _phoneNumber: "90 9874567710",
-      _address: "Bandra",
-      _city: "Mumbai",
-      _state: "Maharastra",
-      _zip: "410141",
-    },
-  ];
